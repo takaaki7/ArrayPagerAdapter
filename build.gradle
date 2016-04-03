@@ -17,7 +17,7 @@ buildscript {
 allprojects {
 
     version = VERSION_NAME
-    group = GROUP
+    group = 'com.nakama.arraypageradapter'
 
     repositories {
         jcenter()

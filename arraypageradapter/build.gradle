@@ -17,16 +17,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-def siteUrl = 'https://github.com/nakama/ArrayPagerAdapter'
-def gitUrl = 'https://github.com/nakama/ArrayPagerAdapter.git'
+def siteUrl = 'https://github.com/takaaki7/ArrayPagerAdapter'
+def gitUrl = 'https://github.com/takaaki7/ArrayPagerAdapter.git'
 
 bintray {
-    user = bintray_user
-    key = bintray_api_key
+    def secretFile = file("${rootDir}/secret/secret.gradle")
+    if (secretFile.exists()) {
+        apply from: secretFile.absolutePath
+        user = project.ext.bintray_user
+        key = project.ext.bintray_api_key
+    }
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
@@ -34,7 +41,7 @@ bintray {
         name = project.name
         desc = ARTIFACT_DESCRIPTION
         websiteUrl = siteUrl
-        issueTrackerUrl = 'https://github.com/nakama/ArrayPagerAdapter/issues'
+        issueTrackerUrl = 'https://github.com/takaaki7/ArrayPagerAdapter/issues'
         vcsUrl = gitUrl
         licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'example']
@@ -84,8 +91,13 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
+    failOnError false
     source = android.sourceSets.main.java.srcDirs
+    options {
+        linksOffline "http://d.android.com/reference", System.getenv("ANDROID_HOME") + "/docs/reference"
+    }
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
