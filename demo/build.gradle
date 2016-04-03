@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion COMPILE_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+    }
+
+    def secretFile = file("${rootDir}/secret/secret.gradle")
+    if (secretFile.exists()) {
+        apply from: secretFile.absolutePath
+        signingConfigs {
+            release {
+                storeFile file(project.ext.storeFile)
+                storePassword project.ext.storePassword
+                keyAlias project.ext.keyAlias
+                keyPassword project.ext.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (secretFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile project(':arraypageradapter')
+
+}
