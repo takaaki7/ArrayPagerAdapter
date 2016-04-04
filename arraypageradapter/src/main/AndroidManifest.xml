@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nakama.arrayviewpager">
+    package="com.nakama.arraypageradapter">
 
     <application
         android:allowBackup="true"

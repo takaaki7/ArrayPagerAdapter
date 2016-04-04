@@ -1,4 +1,4 @@
-package com.nakama.arrayviewpager;
+package com.nakama.arraypageradapter;
 
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;

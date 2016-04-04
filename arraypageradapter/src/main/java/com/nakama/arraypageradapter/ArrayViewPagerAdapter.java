@@ -1,4 +1,4 @@
-package com.nakama.arrayviewpager;
+package com.nakama.arraypageradapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

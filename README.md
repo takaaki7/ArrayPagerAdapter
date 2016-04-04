@@ -2,6 +2,11 @@ ArrayPagerAdapter
 =================
 
 Small and simple library that has custom ViewPager adapters which are able to change data dynamically.
+![demo](https://raw.githubusercontent.com/takaaki7/ArrayPagerAdapter/master/art/demo_record.gif)
+
+Sample application is available on the Play Store.
+
+[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_large.png)](https://play.google.com/store/apps/details?id=com.demo.arraypargeradapter&referrer=utm_source%3Dgithub)
 
 # Usage
 

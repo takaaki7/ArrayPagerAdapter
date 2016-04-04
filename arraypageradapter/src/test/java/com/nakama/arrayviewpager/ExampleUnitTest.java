@@ -1,4 +1,4 @@
-package com.nakama.arrayviewpager;
+package com.nakama.arraypageradapter;
 
 import org.junit.Test;
 

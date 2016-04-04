@@ -1,4 +1,4 @@
-package com.nakama.arrayviewpager;
+package com.nakama.arraypageradapter;
 
 /**
  * Created by nakama on 2016/04/01.
@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;

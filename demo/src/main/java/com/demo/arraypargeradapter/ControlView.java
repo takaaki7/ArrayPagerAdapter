@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.nakama.arrayviewpager.ArrayPagerAdapter;
+import com.nakama.arraypageradapter.ArrayPagerAdapter;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.nakama.arrayviewpager;
+package com.nakama.arraypageradapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseBooleanArray;

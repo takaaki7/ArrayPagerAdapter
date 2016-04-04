@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nakama.arrayviewpager.ArrayViewPagerAdapter;
+import com.nakama.arraypageradapter.ArrayViewPagerAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
