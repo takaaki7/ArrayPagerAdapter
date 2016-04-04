@@ -108,15 +108,7 @@ Sample usage is available in demo directory.
 # Download
 
 ```
-repositories {
-    maven {
-        url 'https://dl.bintray.com/tnakama/maven/'
-    }
-}
-
-dependencies {
-    compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
-}
+compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
 ```
 
 
