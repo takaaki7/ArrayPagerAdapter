@@ -105,6 +105,22 @@ You don't need to call `notifyDataSetChanged()` since it is called internally wh
 
 Sample usage is available in demo directory.
 
+# Download
+
+```
+repositories {
+    maven {
+        url 'https://dl.bintray.com/tnakama/maven/'
+    }
+}
+
+dependencies {
+    compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
+}
+```
+
+
+
 License
 ========
 
