@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
  * Created by nakama on 2016/04/02.
  */
 public class FragmentPagerAdapterActivity extends AppCompatActivity {
+
     @Bind(R.id.control_view)
     ControlView controlView;
     @Bind(R.id.view_pager)
@@ -37,7 +38,7 @@ public class FragmentPagerAdapterActivity extends AppCompatActivity {
         list.add("1");
         list.add("2");
         list.add("3");
-        final MyStatePagerAdapterStateSerializable adapter = new MyStatePagerAdapterStateSerializable(getSupportFragmentManager(), list);
+        MyStatePagerAdapterStateSerializable adapter = new MyStatePagerAdapterStateSerializable(getSupportFragmentManager(), list);
 
         viewPager.setAdapter(adapter);
         controlView.setAdapter(adapter);

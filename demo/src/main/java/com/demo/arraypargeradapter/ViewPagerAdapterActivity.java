@@ -1,8 +1,8 @@
 package com.demo.arraypargeradapter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +16,21 @@ import butterknife.ButterKnife;
 /**
  * Created by nakama on 2016/03/31.
  */
-public class ViewPagerAdapterActivity extends Activity {
+public class ViewPagerAdapterActivity extends AppCompatActivity {
 
     @Bind(R.id.view_pager)
     ViewPager viewPager;
     @Bind(R.id.control_view)
     ControlView controlView;
 
-    private MyPagerAdapter mAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager);
         ButterKnife.bind(this);
-        mAdapter = new MyPagerAdapter(new String[]{"1", "2", "3"});
-        viewPager.setAdapter(mAdapter);
-        controlView.setAdapter(mAdapter);
+        MyPagerAdapter adapter = new MyPagerAdapter(new String[]{"1", "2", "3"});
+        viewPager.setAdapter(adapter);
+        controlView.setAdapter(adapter);
     }
 
     private class MyPagerAdapter extends ArrayViewPagerAdapter<String> {

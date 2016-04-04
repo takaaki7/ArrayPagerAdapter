@@ -24,25 +24,25 @@ Subclasses only need to implement `getFragment(T item, int position)` and return
 
 Here is a simple example implementation of ArrayFragmentStatePagerAdapter.
 ```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_pager);
+    MyStatePagerAdapter adapter = new MyStatePagerAdapter(getSupportFragmentManager(), new String[]{"1", "2", "3"});
+    ((ViewPager)findViewById(R.id.view_pager)).setAdapter(adapter);
+}
+
+class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<String> {
+
+    public MyStatePagerAdapter(FragmentManager fm, String[] datas) {
+        super(fm, datas);
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pager);
-        MyStatePagerAdapter adapter = new MyStatePagerAdapter(getSupportFragmentManager(), new String[]{"1", "2", "3"});
-        ((ViewPager)findViewById(R.id.view_pager)).setAdapter(adapter);
+    public Fragment getFragment(String item, int position) {
+        return MyFragment.newInstance(item);
     }
-
-    class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<String> {
-
-        public MyStatePagerAdapter(FragmentManager fm, String[] datas) {
-            super(fm, datas);
-        }
-
-        @Override
-        public Fragment getFragment(String item, int position) {
-            return MyFragment.newInstance(item);
-        }
-    }
+}
 ```
 
 __Constraints:__ Item class (generic type `T`) must be implementation of `Serializable` or `Parcelable` because the adapter automatically save and restore items state.
@@ -56,17 +56,17 @@ Compared to `ArrayFragmentStatePagerAdapter`, you can use this adapter if there 
 
 Usage is almost the same as `ArrayFragmentStatePagerAdapter`, and item class does not need to implement `Serializable` or `Parcelable`.
 ```
-    class MyFragmentPagerAdapter extends ArrayFragmentPagerAdapter<String> {
+class MyFragmentPagerAdapter extends ArrayFragmentPagerAdapter<String> {
 
-        public MyFragmentPagerAdapter(FragmentManager fm, String[] datas) {
-            super(fm, datas);
-        }
-
-        @Override
-        public Fragment getFragment(String item, int position) {
-            return MyFragment.newInstance(item);
-        }
+    public MyFragmentPagerAdapter(FragmentManager fm, String[] datas) {
+        super(fm, datas);
     }
+
+    @Override
+    public Fragment getFragment(String item, int position) {
+        return MyFragment.newInstance(item);
+    }
+}
 ```
 
 ## 3 ArrayViewPagerAdapter
@@ -75,19 +75,19 @@ If you want to use View to create page, you can use this adapter.
 Subclass of `ArrayViewPagerAdapter` just need to implement `getView()` and return a view of the page.
  
 ```
-    class MyPagerAdapter extends ArrayViewPagerAdapter<String> {
-    
-        public MyPagerAdapter(String[] data) {
-            super(data);
-        }
+class MyPagerAdapter extends ArrayViewPagerAdapter<String> {
 
-        @Override
-        public View getView(LayoutInflater inflater, ViewGroup container, String item, int position) {
-            View v = inflater.inflate(R.layout.item_page, container, false);
-            ((TextView) v.findViewById(R.id.item_txt)).setText(item);
-            return v;
-        }
+    public MyPagerAdapter(String[] data) {
+        super(data);
     }
+
+    @Override
+    public View getView(LayoutInflater inflater, ViewGroup container, String item, int position) {
+        View v = inflater.inflate(R.layout.item_page, container, false);
+        ((TextView) v.findViewById(R.id.item_txt)).setText(item);
+        return v;
+    }
+}
 ```
 
 ## Dynamic item changing

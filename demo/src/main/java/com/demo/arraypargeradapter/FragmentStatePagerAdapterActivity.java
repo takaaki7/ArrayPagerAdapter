@@ -24,6 +24,7 @@ import static butterknife.ButterKnife.findById;
  * Created by nakama on 2016/03/31.
  */
 public class FragmentStatePagerAdapterActivity extends AppCompatActivity {
+
     @Bind(R.id.control_view)
     ControlView controlView;
     @Bind(R.id.view_pager)
@@ -79,6 +80,5 @@ public class FragmentStatePagerAdapterActivity extends AppCompatActivity {
             return v;
         }
     }
-
 
 }
