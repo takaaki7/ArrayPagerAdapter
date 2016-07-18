@@ -116,7 +116,7 @@ compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
 License
 ========
 
-    Copyright (C) 2015 Takaaki Nakama (http://blog.charmas.pl)
+    Copyright (C) 2015 Takaaki Nakama (http://rane.jp)
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
