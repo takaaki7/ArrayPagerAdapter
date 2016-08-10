@@ -13,7 +13,7 @@
         android:id="@+id/fragment_state_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FragmentState" />
+        android:text="Fragment State" />
 
     <Button
         android:id="@+id/fragment_btn"

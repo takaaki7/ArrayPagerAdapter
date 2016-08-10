@@ -94,6 +94,7 @@ class MyPagerAdapter extends ArrayViewPagerAdapter<String> {
 All of these adapters are subclass of `ArrayPagerAdapter` and have following methods to support dynamic data changing.
 
 * `void add(T item)`
+* `void add(int index, T item)`
 * `void addAll(T... items)`
 * `void addAll(List<T> items)`
 * `void remove(int position)`
@@ -108,7 +109,7 @@ Sample usage is available in demo directory.
 # Download
 
 ```
-compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
+compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.2'
 ```
 
 
