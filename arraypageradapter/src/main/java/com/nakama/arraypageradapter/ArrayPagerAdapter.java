@@ -52,6 +52,19 @@ public abstract class ArrayPagerAdapter<T> extends PagerAdapter {
     }
 
     /**
+     * Adds the specified item at the specified position of the array.
+     *
+     * @param item The item to add at the specified position of the array.
+     */
+    public void add(int index, T item) {
+        synchronized (lock) {
+            items.add(index, identifiedItemFactory.create(item));
+        }
+        itemPositionChangeChecked = new SparseBooleanArray(this.items.size());
+        notifyDataSetChanged();
+    }
+
+    /**
      * Adds the specified items at the end of the array.
      *
      * @param items The items to add at the end of the array.

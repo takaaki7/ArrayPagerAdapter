@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion COMPILE_SDK_VERSION as int
-        versionCode VERSION_CODE as int
-        versionName VERSION_NAME
+        versionCode DEMO_VERSION_CODE as int
+        versionName DEMO_VERSION_NAME
     }
 
     def secretFile = file("${rootDir}/secret/secret.gradle")

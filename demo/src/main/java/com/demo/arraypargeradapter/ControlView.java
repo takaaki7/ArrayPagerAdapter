@@ -22,6 +22,8 @@ public class ControlView extends ScrollView {
 
     @Bind(R.id.remove_edit)
     public EditText removeEdit;
+    @Bind(R.id.add_position_edit)
+    public EditText addPositionEdit;
 
     private ArrayPagerAdapter adapter;
     private ItemCreator creator;
@@ -51,20 +53,31 @@ public class ControlView extends ScrollView {
     }
 
 
-    @OnClick({R.id.add_btn, R.id.remove_btn, R.id.add_all_btn, R.id.clear_btn})
+    @OnClick({R.id.add_btn, R.id.add_position_btn, R.id.remove_btn, R.id.add_all_btn, R.id.clear_btn})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_btn:
                 adapter.add(creator.createItem());
                 break;
-            case R.id.remove_btn:
-                String s = removeEdit.getText().toString();
-                if (!s.equals("")) {
-                    int position = Integer.parseInt(s);
-                    if (position >= 0 && position < adapter.getCount()) {
-                        adapter.remove(position);
+            case R.id.add_position_btn:
+                int addPosition = textAsInt(addPositionEdit);
+                if (addPosition != -1) {
+                    if (addPosition >= 0 && addPosition <= adapter.getCount()) {
+                        adapter.add(addPosition, creator.createItem());
                     } else {
-                        Toast.makeText(getContext(), "IndexOutOfBounds:" + position + ",data size is " + adapter.getCount(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "IndexOutOfBounds:" + addPosition + ",data size is " + adapter.getCount(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Set add position.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.remove_btn:
+                int removePosition = textAsInt(removeEdit);
+                if (removePosition != -1) {
+                    if (removePosition >= 0 && removePosition < adapter.getCount()) {
+                        adapter.remove(removePosition);
+                    } else {
+                        Toast.makeText(getContext(), "IndexOutOfBounds:" + removePosition + ",data size is " + adapter.getCount(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "Set remove position.", Toast.LENGTH_SHORT).show();
@@ -77,6 +90,14 @@ public class ControlView extends ScrollView {
                 adapter.clear();
                 break;
         }
+    }
+
+    private int textAsInt(EditText editText) {
+        String str = editText.getText().toString();
+        if (!str.equals("")) {
+            return Integer.parseInt(str);
+        }
+        return -1;
     }
 
     public interface ItemCreator<T> {

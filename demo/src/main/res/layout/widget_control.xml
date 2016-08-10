@@ -23,6 +23,28 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/add_position_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add" />
+
+            <EditText
+                android:id="@+id/add_position_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="AddPosition"
+                android:inputType="number"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
                 android:id="@+id/remove_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
