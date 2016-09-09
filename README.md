@@ -109,7 +109,7 @@ Sample usage is available in demo directory.
 # Download
 
 ```
-compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.2'
+compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.3'
 ```
 
 
