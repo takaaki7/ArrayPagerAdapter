@@ -24,6 +24,7 @@ import java.util.List;
  * If there are large number of pages or need to save fragments' and items' state, it is recommended to use this adapter.
  * Subclasses of this class just need to implement getFragment() and return a fragment associated with position and item.
  * Be careful: Item type T must be implementation of Serializable or Parcelable.
+ *
  * @param <T> item type : Serializable or Parcelable
  */
 public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapter<T> {
@@ -55,7 +56,8 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
 
     /**
      * Return the Fragment associated with a specified position and item.
-     * @param item item of this page.
+     *
+     * @param item     item of this page.
      * @param position position of this page.
      * @return fragment that represent this page.
      */
@@ -67,6 +69,17 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
     @Override
     public void add(T item) {
         super.add(item);
+        checkItemTypeIsSupported();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void add(int index, T item) {
+        mFragments.add(index, null);
+        mSavedState.add(index, null);
+        super.add(index, item);
         checkItemTypeIsSupported();
     }
 
